@@ -12,7 +12,6 @@ void lowestDeposit(float transaction[], int position);
 int main(){
     int position = 0;
     float bankTransactions[MAX_SIZE];
-    float depositAmount;
     int on = 1;
     char choice;
 
@@ -65,19 +64,19 @@ int main(){
 
 void newDeposit(float transaction[], int position)
 {
-    float depositAmount;
+    float depositAmount; // Will receive the deposit amount from user
     printf("Enter the deposit amount: ");
-    scanf("%f", &depositAmount);
-    transaction[position] = depositAmount;
+    scanf("%f", &depositAmount); // Get the deposit amount from user
+    transaction[position] = depositAmount; // Store the deposit amount in the array at the current postion
     printf("Deposit received!");
 
 }
 
 void sumDeposit(float transaction[], int position)
 {
-    float total = 0.0;
+    float total = 0.0; // Initialize total
 
-    for(int i = 0; i < position; i++){
+    for(int i = 0; i < position; i++){ // Loop through the array up to the current position while adding each deposit to total
         total += transaction[i];
     }
     printf("Total:%.2f\n", total);
@@ -86,7 +85,7 @@ void sumDeposit(float transaction[], int position)
 
 void showDepositOrdered(float transaction[], int position)
 {
-    for(int i = 0; i < position - 1; i ++){
+    for(int i = 0; i < position - 1; i ++){ // Bubble sort algorithm to sort in descending order
         for(int j = i + 1; j < position; j++){
             if (transaction[i] < transaction[j]){
                 float temp = transaction[i];
@@ -97,7 +96,7 @@ void showDepositOrdered(float transaction[], int position)
 
     }
 
-    for(int i = 0; i < position; i++){
+    for(int i = 0; i < position; i++){ // Print the deposits in descending order
         printf("Deposits from highest to lowest: %.2f\n", transaction[i]);
     }
 }
@@ -105,16 +104,16 @@ void showDepositOrdered(float transaction[], int position)
 void averageDeposit(float transaction[], int position)
 {
     float average = 0.0;
-    for(int i = 0; i < position; i++){
+    for(int i = 0; i < position; i++){ // Loop through the array up to the current position while adding each deposit to average
         average += transaction[i];
     }
-    average = average / position;
+    average = average / position; // Calculate the average by dividing the total sum by the number of deposits;
     printf("Average: %.2f\n", average);
 }
 
 void lowestDeposit(float transaction[], int position)
 {
-    for(int i = 0; i < position - 1; i ++){
+    for(int i = 0; i < position - 1; i ++){ // Same bubble sort algorithm to sort in descending order
         for(int j = i + 1; j < position; j++){
             if (transaction[i] < transaction[j]){
                 float temp = transaction[i];
@@ -124,6 +123,6 @@ void lowestDeposit(float transaction[], int position)
         }
 
     }
-    printf("Lowest deposit: %.2f\n", transaction[position - 1]);
+    printf("Lowest deposit: %.2f\n", transaction[position - 1]); // Print the last element in the array which correspondeds to the lowest deposit
 
 }
